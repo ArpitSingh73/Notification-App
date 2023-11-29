@@ -1,15 +1,21 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
 import {posts} from "./data.js"
 import './App.css'
 import Navbar from './components/Navbar';
 import Card from './components/Card';
+import {io} from "socket.io-client"
 
 function App() {
  const [username, setUsername] = useState("");
   const [user, setUser] = useState("");
   console.log(user)
+
+  useEffect(() => {
+   const socket = io("http://localhost:5000")
+},[])
+
 //  const [socket, setSocket] = useState(null);
   return (
     <>
