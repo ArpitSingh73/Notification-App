@@ -1,37 +1,47 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from "react";
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
-import {posts} from "./data.js"
-import './App.css'
-import Navbar from './components/Navbar';
-import Card from './components/Card';
-import {io} from "socket.io-client"
+import { posts } from "./data.js";
+import "./App.css";
+import Navbar from "./components/Navbar";
+import Card from "./components/Card";
+import { io } from "socket.io-client";
 
 function App() {
- const [username, setUsername] = useState("");
+  const [username, setUsername] = useState("");
   const [user, setUser] = useState("");
-  console.log(user)
+  const [socket, setSocket] = useState(null);
+  console.log(user);
 
   useEffect(() => {
-   const socket = io("http://localhost:5000")
-},[])
+    setSocket(io("http://localhost:5000"));
+  }, []);
 
-//  const [socket, setSocket] = useState(null);
+  useEffect(() => {
+    socket?.emit("newUser", user);
+  }, [socket, user]);
+
+  //  const [socket, setSocket] = useState(null);
   return (
     <>
       <div className="container">
         {user ? (
           <>
-            <Navbar></Navbar>
-            {posts.map((post) =>(
-                <Card key={post.id} post={post}></Card> 
-        ))}
-           
+            <Navbar socket={socket}></Navbar>
+            {posts.map((post) => (
+              <Card
+                key={post.id}
+                post={post}
+                socket={socket}
+                user={user}
+              ></Card>
+            ))}
+
             <span className="username">{user}</span>
           </>
         ) : (
           <div className="login">
-            <h2>Lama App</h2>
+            <h2>A!ert App</h2>
             <input
               type="text"
               placeholder="username"
@@ -45,4 +55,4 @@ function App() {
   );
 }
 
-export default App
+export default App;

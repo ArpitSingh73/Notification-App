@@ -11,12 +11,43 @@ const io = new Server(server, {
   cors: { origin: "http://127.0.0.1:5173" },
 });
 
+let onlineUsers = [];
+
+const addNewUser = (username, socketId) => {
+  !onlineUsers.some((user) => user.username === username) &&
+    onlineUsers.push({ username, socketId });
+  console.log(onlineUsers);
+};
+// console.log(onlineUsers);
+
+const removeUser = (socketId) => {
+  onlineUsers = onlineUsers.filter((user) => user.socketId !== socketId);
+};
+
+const getUser = async(username) => {
+  console.log("username get:", username);
+  return await onlineUsers.find((user) => user.username === username);
+};
+
 io.on("connection", (socket) => {
-  console.log("a user connected");
-  console.log(socket.id);
+  socket.on("newUser", async (username) => {
+    await addNewUser(username, socket.id);
+  });
+
+  socket.on("sendNotification", async ({ senderName, receiverName, type }) => {
+    // console.log("sendername :", senderName);
+    // console.log("type ", type);
+    // console.log("username call", receiverName);
+    const reciever = await getUser(receiverName);
+    // console.log(reciever.socketId);
+    io.to(reciever.socketId).emit("getNotification", {
+      senderName,
+      type,
+    });
+  });
 
   socket.on("disconnect", () => {
-    console.log("someone has disconnected");
+    removeUser(socket.id);
   });
 });
 

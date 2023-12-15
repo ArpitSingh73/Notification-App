@@ -1,5 +1,11 @@
 .card {
   height: 280px;
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+  border-radius: 3px;
+  background-color: darkseagreen;
+  /* box-shadow: 5px 5px rgb(226, 208, 107); */
+  /* margin-bottom: 5px; */
 }
 
 .info {
@@ -8,39 +14,47 @@
   padding: 5px;
   font-weight: 500;
   font-size: 14px;
+  background-color: darkseagreen;
+  /* border: 1px solid black; */
 }
 
 .userImg {
   width: 30px;
   height: 30px;
   border-radius: 50%;
+  border: 2px solid rgb(225, 147, 45);
   object-fit: cover;
   margin-right: 10px;
 }
 
-.postImg{
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
+.postImg {
+  width: 100%;
+  height: 200px;
+  border-left: 2px soild black;
+  border-right: 2px soild black;
+  border-radius: 3px;
+  object-fit: cover;
 }
 
-.interaction{
-    display: flex;
-    align-items: center;
-    padding: 5px 10px;
-    position: relative;
+.interaction {
+  display: flex;
+  align-items: center;
+  /* padding: 5px 10px; */
+  padding-left: 10px;
+  position: relative;
+  /* margin-bottom: 10px; */
 }
 
-.cardIcon{
-    width: 16px;
-    height: 16px;
-    cursor: pointer;
-    margin-right: 10px;
+.cardIcon {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  margin-right: 10px;
 }
 
-.infoIcon{
-    position: absolute;
-    right: 0;
-    width: 12px;
-    height: 12px;
+.infoIcon {
+  position: absolute;
+  right: 0;
+  width: 12px;
+  height: 12px;
 }

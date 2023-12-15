@@ -1,25 +1,27 @@
 .navbar {
   height: 50px;
-  background-color: lightseagreen;
-   display: flex;
+  background-color: rgb(101, 125, 124);
+  display: flex;
   align-items: center;
-  justify-content: space-around; 
+  justify-content: space-between;
   color: white;
-  /* position: relative;  */
+  position: relative;
 }
 
 .logo {
   font-weight: bold;
   font-size: 20px;
+  margin-left: 15px;
 }
 
 .icons {
+  margin-right: 15px;
   display: flex;
   align-items: center;
 }
 
 .icon {
-  margin-left: 15px;
+  margin-left: 12px;
   cursor: pointer;
   position: relative;
 }
@@ -43,7 +45,7 @@
   top: -5px;
   right: -5px;
 }
-/*
+
 .notifications {
   position: absolute;
   top: 50px;
@@ -65,4 +67,4 @@
   width: 80%;
   padding: 5px;
   margin-top: 10px;
-} */
+}
