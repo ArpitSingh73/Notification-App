@@ -1,6 +1,6 @@
 import "./card.css"
 import Heart from "../image/heart.svg"
-import HeartFilled from "../image/heartfilled.svg"
+import HeartFilled from "../image/heartFilled.svg"
 import Comment from "../image/comment.svg"
 import Share from "../image/share.svg"
 import Info from "../image/info.svg"
