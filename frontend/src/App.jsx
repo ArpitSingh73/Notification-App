@@ -16,7 +16,7 @@ function App() {
 
   useEffect(() => {
     // setSocket(io("http://localhost:5000"));
-    setSocket(io("https://alert-p4xi.onrender.com"));
+    setSocket(io("https://alert-908g.onrender.com"));
   }, []);
 
   useEffect(() => {
