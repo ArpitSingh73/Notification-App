@@ -4,7 +4,7 @@ const { Server } = require("socket.io");
 const dotenv = require("dotenv");
 dotenv.config();
 const cors = require("cors");
-const path = require("path")
+const path = require("path");
 const app = express();
 app.use(cors());
 const server = createServer(app);
@@ -14,9 +14,9 @@ const __dirname1 = path.resolve();
 if (process.env.MODE === "production") {
   app.use(express.static(path.join(__dirname1, "frontend/build")));
 
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname1,"frontend","dist", "index.html"))
-  })
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname1, "frontend", "dist", "index.html"));
+  });
 }
 const io = new Server(server, {
   cors: { origin: "http://127.0.0.1:5173" },
@@ -35,7 +35,7 @@ const removeUser = (socketId) => {
   onlineUsers = onlineUsers.filter((user) => user.socketId !== socketId);
 };
 
-const getUser = async(username) => {
+const getUser = async (username) => {
   console.log("username get:", username);
   return await onlineUsers.find((user) => user.username === username);
 };
