@@ -1,12 +1,23 @@
 const express = require("express");
 const { createServer } = require("node:http");
 const { Server } = require("socket.io");
+const dotenv = require("dotenv");
+dotenv.config();
 const cors = require("cors");
-
+const path = require("path")
 const app = express();
 app.use(cors());
 const server = createServer(app);
 // const io = new Server(server );
+
+const __dirname1 = path.resolve();
+if (process.env.mode === "production") {
+  app.use(express.static(path.join(__dirname1, "/frontend/build")));
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname1,"frontend","build", "index.html"))
+  })
+}
 const io = new Server(server, {
   cors: { origin: "http://127.0.0.1:5173" },
 });

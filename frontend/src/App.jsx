@@ -6,6 +6,7 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import Card from "./components/Card";
 import { io } from "socket.io-client";
+import Alert from "./components/Alert.jsx";
 
 function App() {
   const [username, setUsername] = useState("");
@@ -40,15 +41,18 @@ function App() {
             <span className="username">{user}</span>
           </>
         ) : (
-          <div className="login">
-            <h2>A!ert App</h2>
-            <input
-              type="text"
-              placeholder="username"
-              onChange={(e) => setUsername(e.target.value)}
-            />
-            <button onClick={() => setUser(username)}>Login</button>
-          </div>
+          <>
+            <Alert></Alert>
+            <div className="login">
+              <h2>A!ert App</h2>
+              <input
+                type="text"
+                placeholder="username"
+                onChange={(e) => setUsername(e.target.value)}
+              />
+              <button onClick={() => setUser(username)}>Login</button>
+            </div>
+          </>
         )}
       </div>
     </>
